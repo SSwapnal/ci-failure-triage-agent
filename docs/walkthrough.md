@@ -189,6 +189,7 @@ To poke at intermediate state in a Python shell:
 ```python
 from ci_triage.ingest import load_runs
 from ci_triage.flakiness import analyze_history
+
 runs = load_runs("sample_data")
 h = analyze_history(runs)
 h["tests.api.test_checkout::test_checkout_completes_within_sla"].flipped_commits
