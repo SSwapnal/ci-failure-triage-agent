@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.example.orders.pricing.OrderPricingTest" tests="3" failures="1" errors="0" skipped="0" time="1.450" timestamp="2026-09-23T15:00:00">
+  <testcase name="appliesBulkDiscountAboveThreshold" classname="com.example.orders.pricing.OrderPricingTest" time="0.372">
+    <failure message="expected: &lt;90.00&gt; but was: &lt;100.00&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;90.00&gt; but was: &lt;100.00&gt;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+	at com.example.orders.pricing.OrderPricingTest.appliesBulkDiscountAboveThreshold(OrderPricingTest.java:47)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)</failure>
+  </testcase>
+  <testcase name="noDiscountBelowThreshold" classname="com.example.orders.pricing.OrderPricingTest" time="0.303" />
+  <testcase name="roundsTotalsToTwoDecimals" classname="com.example.orders.pricing.OrderPricingTest" time="0.277" />
+</testsuite>

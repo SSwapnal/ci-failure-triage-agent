@@ -1,0 +1,12 @@
+{
+  "run_id": "r1008",
+  "pipeline": "orders-ci",
+  "branch": "main",
+  "trigger": "rerun",
+  "timestamp": "2026-09-24T00:00:00+00:00",
+  "commit": {
+    "sha": "e7a1b52",
+    "message": "test: refactor inventory client fixtures to shared stub server",
+    "author": "tom.r"
+  }
+}

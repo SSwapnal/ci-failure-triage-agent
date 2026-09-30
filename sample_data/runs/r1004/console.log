@@ -1,0 +1,17 @@
+2026-09-22T12:00:01Z [ci] Run r1004 on runner ci-runner-5
+2026-09-22T12:00:02Z [ci] Checking out 9c41e7a (main)
+2026-09-22T12:00:05Z [ci] docker compose up -d db cache rates-stub
+2026-09-22T12:00:17Z [ci] db is healthy
+2026-09-22T12:00:19Z [ci] mvn -B -pl orders-service test
+2026-09-22T12:00:23Z [ERROR] com.example.orders.pricing.OrderPricingTest.appliesBulkDiscountAboveThreshold -- Time elapsed: 0.012 s <<< FAILURE!
+2026-09-22T12:00:26Z [INFO] Tests run: 9, Failures: 1, Errors: 0, Skipped: 0
+2026-09-22T12:00:28Z [ci] pytest tests/api -v --tb=short --junitxml=api-tests/pytest-report.xml
+2026-09-22T12:00:29Z tests/api/test_checkout.py::test_checkout_completes_within_sla PASSED
+2026-09-22T12:00:30Z tests/api/test_checkout.py::test_checkout_applies_coupon PASSED
+2026-09-22T12:00:31Z tests/api/test_user_profile.py::test_get_profile PASSED
+2026-09-22T12:00:32Z tests/api/test_user_profile.py::test_update_profile_email PASSED
+2026-09-22T12:00:33Z tests/api/test_search.py::test_search_ranking_prefers_exact_match PASSED
+2026-09-22T12:00:34Z tests/api/test_payments.py::test_refund_payment PASSED
+2026-09-22T12:00:35Z tests/api/test_reports.py::test_export_csv_header_order PASSED
+2026-09-22T12:00:36Z [ci] ===== 0 failed, 7 passed =====
+2026-09-22T12:00:37Z [ci] Job finished: FAILURE

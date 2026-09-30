@@ -1,0 +1,20 @@
+2026-09-23T15:00:01Z [ci] Run r1007 on runner ci-runner-3
+2026-09-23T15:00:02Z [ci] Checking out e7a1b52 (main)
+2026-09-23T15:00:05Z [ci] docker compose up -d db cache rates-stub
+2026-09-23T15:00:17Z [ci] db is healthy
+2026-09-23T15:00:19Z [ci] mvn -B -pl orders-service test
+2026-09-23T15:00:23Z [ERROR] com.example.orders.pricing.OrderPricingTest.appliesBulkDiscountAboveThreshold -- Time elapsed: 0.012 s <<< FAILURE!
+2026-09-23T15:00:27Z [ERROR] com.example.orders.inventory.InventoryClientTest.reservesStockForOrder -- Time elapsed: 0.012 s <<< ERROR!
+2026-09-23T15:00:31Z [ERROR] com.example.orders.inventory.InventoryClientTest.releasesStockOnCancel -- Time elapsed: 0.012 s <<< ERROR!
+2026-09-23T15:00:34Z [INFO] Tests run: 9, Failures: 1, Errors: 2, Skipped: 0
+2026-09-23T15:00:36Z [ci] pytest tests/api -v --tb=short --junitxml=api-tests/pytest-report.xml
+2026-09-23T15:00:37Z [app] WARN checkout-service: slow upstream payment-gateway response 2484ms
+2026-09-23T15:00:38Z tests/api/test_checkout.py::test_checkout_completes_within_sla FAILED
+2026-09-23T15:00:39Z tests/api/test_checkout.py::test_checkout_applies_coupon PASSED
+2026-09-23T15:00:40Z tests/api/test_user_profile.py::test_get_profile PASSED
+2026-09-23T15:00:41Z tests/api/test_user_profile.py::test_update_profile_email PASSED
+2026-09-23T15:00:42Z tests/api/test_search.py::test_search_ranking_prefers_exact_match PASSED
+2026-09-23T15:00:43Z tests/api/test_payments.py::test_refund_payment PASSED
+2026-09-23T15:00:44Z tests/api/test_reports.py::test_export_csv_header_order PASSED
+2026-09-23T15:00:45Z [ci] ===== 1 failed, 6 passed =====
+2026-09-23T15:00:46Z [ci] Job finished: FAILURE

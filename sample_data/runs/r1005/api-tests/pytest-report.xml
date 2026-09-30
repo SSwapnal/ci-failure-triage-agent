@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="7" time="9.580" timestamp="2026-09-22T21:00:00+00:00" hostname="ci-runner-3">
+    <testcase classname="tests.api.test_checkout" name="test_checkout_completes_within_sla" time="0.634" />
+    <testcase classname="tests.api.test_checkout" name="test_checkout_applies_coupon" time="0.172" />
+    <testcase classname="tests.api.test_user_profile" name="test_get_profile" time="0.769" />
+    <testcase classname="tests.api.test_user_profile" name="test_update_profile_email" time="1.018" />
+    <testcase classname="tests.api.test_search" name="test_search_ranking_prefers_exact_match" time="0.634" />
+    <testcase classname="tests.api.test_payments" name="test_refund_payment" time="0.279" />
+    <testcase classname="tests.api.test_reports" name="test_export_csv_header_order" time="0.480" />
+  </testsuite>
+</testsuites>

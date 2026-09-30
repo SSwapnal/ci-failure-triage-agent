@@ -1,0 +1,12 @@
+{
+  "run_id": "r1003",
+  "pipeline": "orders-ci",
+  "branch": "main",
+  "trigger": "push",
+  "timestamp": "2026-09-22T03:00:00+00:00",
+  "commit": {
+    "sha": "7b8e4d0",
+    "message": "docs: update API changelog",
+    "author": "sam.o"
+  }
+}

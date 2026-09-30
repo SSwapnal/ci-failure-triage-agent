@@ -1,0 +1,91 @@
+# Example: run CI failure triage after a failed test job.
+#
+# Assumes the team's test workflow uploads JUnit XML and the console log as an
+# artifact named "test-results" on every run. When tests fail, this job pulls
+# that artifact from the last N runs on the same branch, lays them out as
+# runs/<run_id>/, and runs the triage agent over the history.
+#
+# Copy into .github/workflows/ of the project under test and adjust names.
+
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # ... build and run tests; write JUnit XML to test-results/ ...
+      - name: Run tests
+        run: |
+          mkdir -p test-results
+          set -o pipefail
+          pytest --junitxml=test-results/pytest-report.xml --tb=short -v 2>&1 | tee test-results/console.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
+
+  triage:
+    needs: test
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: write # only used when --no-dry-run is enabled below
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HISTORY_RUNS: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install triage agent
+        # Pin to a tag or commit in real use.
+        run: pip install "git+https://github.com/<owner>/ci-failure-triage-agent@main"
+
+      - name: Collect test results from recent runs
+        run: |
+          branch="${{ github.head_ref || github.ref_name }}"
+          gh run list --repo "$GITHUB_REPOSITORY" --workflow tests --branch "$branch" \
+            --limit "$HISTORY_RUNS" --json databaseId,headSha,createdAt,event > runs.json
+          jq -c '.[]' runs.json | while read -r run; do
+            id=$(jq -r .databaseId <<<"$run")
+            sha=$(jq -r .headSha <<<"$run")
+            dir="history/runs/$id"
+            gh run download "$id" --repo "$GITHUB_REPOSITORY" -n test-results -D "$dir" || continue
+            msg=$(gh api "repos/$GITHUB_REPOSITORY/commits/$sha" --jq '.commit.message' | head -n1)
+            author=$(gh api "repos/$GITHUB_REPOSITORY/commits/$sha" --jq '.author.login // .commit.author.name')
+            jq -n --arg id "$id" --arg sha "${sha:0:7}" --arg msg "$msg" --arg author "$author" \
+              --arg branch "$branch" --argjson run "$run" \
+              '{run_id: $id, branch: $branch, trigger: $run.event, timestamp: $run.createdAt,
+                commit: {sha: $sha, message: $msg, author: $author}}' > "$dir/run.json"
+          done
+          ls history/runs
+
+      - name: Triage
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} # falls back to the mock classifier if unset
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          triage run --input history --out triage
+          # To file issues for high-confidence bugs (deduplicated by signature):
+          # triage run --input history --out triage --no-dry-run --repo "$GITHUB_REPOSITORY"
+          cat triage/triage-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: triage-report
+          path: triage/

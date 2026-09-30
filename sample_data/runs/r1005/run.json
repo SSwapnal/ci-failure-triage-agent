@@ -1,0 +1,12 @@
+{
+  "run_id": "r1005",
+  "pipeline": "orders-ci",
+  "branch": "main",
+  "trigger": "rerun",
+  "timestamp": "2026-09-22T21:00:00+00:00",
+  "commit": {
+    "sha": "9c41e7a",
+    "message": "pricing: move bulk discount thresholds to config",
+    "author": "dev.patel"
+  }
+}

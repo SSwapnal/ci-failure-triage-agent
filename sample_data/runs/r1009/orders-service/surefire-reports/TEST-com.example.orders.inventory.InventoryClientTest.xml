@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.example.orders.inventory.InventoryClientTest" tests="2" failures="0" errors="2" skipped="0" time="0.857" timestamp="2026-09-24T09:00:00">
+  <testcase name="reservesStockForOrder" classname="com.example.orders.inventory.InventoryClientTest" time="0.011">
+    <error message="Cannot invoke &quot;com.example.orders.inventory.StubInventoryServer.baseUrl()&quot; because &quot;this.stubServer&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "com.example.orders.inventory.StubInventoryServer.baseUrl()" because "this.stubServer" is null
+	at com.example.orders.inventory.InventoryClientTest.setUp(InventoryClientTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:520)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeBeforeEachMethods(ClassBasedTestDescriptor.java:504)</error>
+  </testcase>
+  <testcase name="releasesStockOnCancel" classname="com.example.orders.inventory.InventoryClientTest" time="0.042">
+    <error message="Cannot invoke &quot;com.example.orders.inventory.StubInventoryServer.baseUrl()&quot; because &quot;this.stubServer&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "com.example.orders.inventory.StubInventoryServer.baseUrl()" because "this.stubServer" is null
+	at com.example.orders.inventory.InventoryClientTest.setUp(InventoryClientTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:520)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeBeforeEachMethods(ClassBasedTestDescriptor.java:504)</error>
+  </testcase>
+</testsuite>

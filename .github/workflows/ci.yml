@@ -1,0 +1,45 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Unit and pipeline tests
+        run: pytest
+
+      - name: Triage demo on sample data (mock LLM, no API key needed)
+        env:
+          LLM_PROVIDER: mock
+        run: |
+          triage run --input sample_data --out reports/
+          cat reports/triage-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Committed sample report is up to date
+        run: diff -u docs/sample-triage-report.md reports/triage-report.md
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triage-report
+          path: reports/
