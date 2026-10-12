@@ -71,3 +71,4 @@ READY or HUMAN_REVIEW
 ## Concepts practiced
 
 LLM, prompts, system prompt, user prompt, API, structured output, Pydantic, confidence, hallucination prevention, deterministic logic, and human-in-the-loop.
+CHATGPT REFERENCE : https://chatgpt.com/share/6acc758d-0a58-83ea-9c26-bcfa2dc5ef18
