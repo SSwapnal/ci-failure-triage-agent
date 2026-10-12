@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<testsuite name="com.example.orders.inventory.InventoryClientTest" tests="2" failures="0" errors="0" skipped="0" time="1.131" timestamp="2026-09-21T09:00:00">
-  <testcase name="reservesStockForOrder" classname="com.example.orders.inventory.InventoryClientTest" time="0.272" />
-  <testcase name="releasesStockOnCancel" classname="com.example.orders.inventory.InventoryClientTest" time="0.357" />
-</testsuite>

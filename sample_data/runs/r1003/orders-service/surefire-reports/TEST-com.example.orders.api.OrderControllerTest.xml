@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<testsuite name="com.example.orders.api.OrderControllerTest" tests="2" failures="0" errors="0" skipped="0" time="1.485" timestamp="2026-09-22T03:00:00">
-  <testcase name="createsOrder" classname="com.example.orders.api.OrderControllerTest" time="0.258" />
-  <testcase name="rejectsEmptyCart" classname="com.example.orders.api.OrderControllerTest" time="0.225" />
-</testsuite>

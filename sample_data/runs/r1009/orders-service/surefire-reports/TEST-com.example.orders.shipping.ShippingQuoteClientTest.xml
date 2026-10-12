@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<testsuite name="com.example.orders.shipping.ShippingQuoteClientTest" tests="2" failures="0" errors="0" skipped="0" time="1.155" timestamp="2026-09-24T09:00:00">
-  <testcase name="quotesStandardShipping" classname="com.example.orders.shipping.ShippingQuoteClientTest" time="0.098" />
-  <testcase name="quotesExpressShipping" classname="com.example.orders.shipping.ShippingQuoteClientTest" time="0.166" />
-</testsuite>

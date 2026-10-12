@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<testsuite name="com.example.orders.pricing.OrderPricingTest" tests="3" failures="0" errors="0" skipped="0" time="0.401" timestamp="2026-09-21T18:00:00">
-  <testcase name="appliesBulkDiscountAboveThreshold" classname="com.example.orders.pricing.OrderPricingTest" time="0.307" />
-  <testcase name="noDiscountBelowThreshold" classname="com.example.orders.pricing.OrderPricingTest" time="0.045" />
-  <testcase name="roundsTotalsToTwoDecimals" classname="com.example.orders.pricing.OrderPricingTest" time="0.155" />
-</testsuite>
